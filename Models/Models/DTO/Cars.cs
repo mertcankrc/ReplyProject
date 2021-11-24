@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Models.Models.Response
+namespace Models.DTO.Response
 {
     public class Cars
     {

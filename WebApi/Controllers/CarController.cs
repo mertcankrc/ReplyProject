@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Models.Models.Response;
+using Models.DTO.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +13,7 @@ namespace WebApi.Controllers
     public class CarController : Controller
     {
         [HttpGet]
+        [Route("GetCarList")]
         public List<Cars> GetCarList()
         {
             CarBusiness carB = new CarBusiness();
@@ -20,6 +21,8 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete]
+        [Route("DeleteCarById")]
+
         public bool DeleteCarById(int id)
         {
             CarBusiness carB = new CarBusiness();
@@ -27,6 +30,8 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [Route("AddCar")]
+
         public bool AddCar(Cars car)
         {
             CarBusiness carB = new CarBusiness();
@@ -34,6 +39,8 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
+        [Route("UpdateCar")]
+
         public bool UpdateCar(Cars car)
         {
             CarBusiness carB = new CarBusiness();

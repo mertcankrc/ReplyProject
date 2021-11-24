@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Models.Models.Response;
+using Models.DTO.Response;
+using Models.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +20,7 @@ namespace WebApi.Data
                    .SetBasePath(Directory.GetCurrentDirectory())
                    .AddJsonFile("appsettings.json")
                    .Build();
-                var connectionString = configuration.GetConnectionString("ReplyProjectConn");
+                var connectionString = "Server=.;Database=mertcanDb;Trusted_Connection=True;";
                 optionsBuilder.UseSqlServer(connectionString);
                 ////var connectionString = configuration.GetConnectionString("LibLibConnString");
                 //optionsBuilder.UseSqlServer();
@@ -28,5 +29,7 @@ namespace WebApi.Data
 
         }
         public DbSet<Cars> cars { get; set; }
+        public DbSet<Users> users { get; set; }
+        public DbSet<Demands> demands { get; set; }
     }
 }

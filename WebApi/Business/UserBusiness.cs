@@ -7,26 +7,26 @@ using WebApi.Data;
 
 namespace WebApi.Business
 {
-    public class CarBusiness
+    public class UserBusiness
     {
-        public List<Cars> GetCarList()
+        public List<Users> GetUserList()
         {
 
-                using (var ctx = new ReplyProjectContext())
-                {
-                    var cars =  ctx.cars.ToList();
-                    return cars;
-                }
+            using (var ctx = new ReplyProjectContext())
+            {
+                var users = ctx.users.ToList();
+                return users;
+            }
         }
 
-        public bool DeleteCar(int id)
+        public bool DeleteUser(int id)
         {
             using (var ctx = new ReplyProjectContext())
             {
                 try
                 {
-                    var car = ctx.cars.Where(x => x.Id == id).FirstOrDefault();
-                    ctx.Remove(car);
+                    var user = ctx.users.Where(x => x.Id == id).FirstOrDefault();
+                    ctx.Remove(user);
                     ctx.SaveChanges();
                     return true;
                 }
@@ -34,21 +34,21 @@ namespace WebApi.Business
                 {
                     return false;
                 }
-               
+
             }
         }
 
-        public bool AddCar(Cars car)
+        public bool AddUser(Users user)
         {
             using (var ctx = new ReplyProjectContext())
             {
                 try
                 {
-                    ctx.Add(car);
+                    ctx.Add(user);
                     ctx.SaveChanges();
                     return true;
                 }
-                catch(Exception Ex)
+                catch (Exception Ex)
                 {
                     return false;
                 }
@@ -56,18 +56,16 @@ namespace WebApi.Business
             }
         }
 
-        public bool UpdateCar(Cars car)
+        public bool UpdateUser(Users user)
         {
             using (var ctx = new ReplyProjectContext())
             {
                 try
                 {
-                    var updateCar = ctx.cars.Where(x => x.Id == car.Id).FirstOrDefault();
-                    updateCar.Infotainment = car.Infotainment;
-                    updateCar.Model = car.Model;
-                    updateCar.Engine = car.Engine;
-                    updateCar.Design = car.Design;
-                    updateCar.Coordination = car.Coordination;
+                    var updateUser = ctx.users.Where(x => x.Id == user.Id).FirstOrDefault();
+                    updateUser.Name = user.Name;
+                    updateUser.Age = user.Age;
+                    updateUser.Gender = user.Gender;
                     ctx.SaveChanges();
                     return true;
                 }
@@ -80,3 +78,4 @@ namespace WebApi.Business
         }
     }
 }
+
